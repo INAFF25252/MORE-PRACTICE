@@ -86,12 +86,17 @@ const titles = [
 
 //Array of authors and the book they wrote
 //"--- wrote --- in ---"
-
+books.forEach((book)=> console.log(`${book.authorFirst} wrote ${book.name}`));
 //Sort books from oldest to most recent
 
 //sort books alphabetically
-
+books.sort();
+//const abc = books.sort();
+//console.log(abc)
 //Find who wrote War and Peace
+
+const WarandPeace = books.find((title) => title.name === "War and Peace");
+console.log(`3rd assignment: ${WarandPeace.authorFirst} ${WarandPeace.authorLast} wrote War and Peace`);
 
 //how many books were written before 1900?
 
