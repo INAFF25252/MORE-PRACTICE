@@ -134,6 +134,6 @@ if (books.every((within)=> new Date().getFullYear() - within.publishDate <=100))
   }
   
 //print a list of books that "includes" the genre historical
-books.filter((before)=>before.genre.includes("historical")).forEach((before)=> {
-  console.log(before.name);
+books.filter((genre)=>genre.genre.includes("historical")).forEach((book)=> {
+  console.log(book.name);
 });
