@@ -86,17 +86,11 @@ const titles = [
 
 //Array of authors and the book they wrote
 //"--- wrote --- in ---"
-books.forEach((book)=> console.log(`${book.authorFirst} wrote ${book.name}`));
-//Sort books from oldest to most recent
-const age = books.sort(function(a, b){
-  return a.publishDate - b.publishDate;
-});
-console.log(age);
+books.forEach((book)=> console.log(`${book.authorFirst} ${book.authorLast} wrote ${book.name}`))
 //sort books alphabetically
-
-const title = titles.sort(function (title1, title2){
-  const nameA = title1.toUpperCase(); // ignore upper and lowercase
-  const nameB = title2.toUpperCase(); // ignore upper and lowercase
+const abc = titles.sort((book1, book2)=> {
+  const nameA = book1.toUpperCase(); // ignore upper and lowercase
+  const nameB = book2.toUpperCase(); // ignore upper and lowercase
   if (nameA < nameB) {
     return -1;
   }
@@ -107,33 +101,20 @@ const title = titles.sort(function (title1, title2){
   // names must be equal
   return 0;
 });
-console.log(title)
-
+console.log(abc)
 //Find who wrote War and Peace
-
-const WarandPeace = books.find((title) => title.name === "War and Peace");
-console.log(`3rd assignment: ${WarandPeace.authorFirst} ${WarandPeace.authorLast} wrote War and Peace`);
-
+const War = books.find((author)=>author.name === "War and Peace")
+console.log(`${War.authorFirst} ${War.authorLast} wrote War and Peace`)
 //how many books were written before 1900?
-const howMany = books.filter((before)=> before.publishDate<1900);
-console.log(howMany.length);
+const before = books.filter((date)=> date.publishDate < 1900)
+console.log(before.length)
 //was there at least one book published within the last 100 years?
-if (books.some((within)=> new Date().getFullYear() - within.publishDate <=100))
-  {
-    console.log("true");
-  } else {
-    console.log("false");
-  }
-
+const wasthere = books.some((within)=> new Date().getFullYear() - within.publishDate < 100) 
+console.log(wasthere)
 //was every book published within the last 100 years?
-if (books.every((within)=> new Date().getFullYear() - within.publishDate <=100))
-  {
-    console.log("true");
-  } else {
-    console.log("false");
-  }
+const every = books.every((within)=> new Date().getFullYear() - within.publishDate < 100) 
+console.log(every)
   
 //print a list of books that "includes" the genre historical
-books.filter((genre)=>genre.genre.includes("historical")).forEach((book)=> {
-  console.log(book.name);
-});
+const his = books.filter((genre)=> genre.genre.includes("historical") )
+console.log(his)
