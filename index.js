@@ -118,20 +118,22 @@ console.log(`3rd assignment: ${WarandPeace.authorFirst} ${WarandPeace.authorLast
 const howMany = books.filter((before)=> before.publishDate<1900);
 console.log(howMany.length);
 //was there at least one book published within the last 100 years?
-function atLeast() {if (books.filter((within)=> {return within.publishDate>1923}))
-{
-  println("true")
-}
-else {println("false")};};
-console.log(within);
-
+if (books.some((within)=> new Date().getFullYear() - within.publishDate <=100))
+  {
+    console.log("true");
+  } else {
+    console.log("false");
+  }
 
 //was every book published within the last 100 years?
-function within() {if (books.filter((within)=> within.publishDate>1923))
+if (books.every((within)=> new Date().getFullYear() - within.publishDate <=100))
   {
-    println("true")
-  };};
-  console.log(within);
+    console.log("true");
+  } else {
+    console.log("false");
+  }
+  
 //print a list of books that "includes" the genre historical
-const historical = books.filter((before)=>before.genre === "historical");
-console.log(historical.name);
+books.filter((before)=>before.genre.includes("historical")).forEach((before)=> {
+  console.log(before.name);
+});
